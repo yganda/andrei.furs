@@ -4,7 +4,42 @@
 	<meta charset="UTF-8">
 	<title>Task 1</title>
 	<script type="text/javascript">
-
+		function getRandomInt(N) 
+		{
+			return Math.floor(Math.random( ) * (N-Math.floor(Math.random( ) * 23)));
+		}
+		var N = +prompt("Введите количество элементов массива"),
+				arr = [];
+		for (var i = 0; i < N; i++)
+		{
+			arr.push(getRandomInt(N));
+		}
+		document.write("Элементы массива: " + arr + "</br>");
+		var max = arr[0], min = arr[0], sum = 0, arithmeticAverage = 0, odds = "";
+		for (var i = 0; i < N; i++)
+		{
+			sum+=arr[i];
+			if (max < arr[i])
+			{
+				max = arr[i];
+			}
+			if (min > arr[i])
+			{
+				min = arr[i];
+			}
+			if ((arr[i] % 2) != 0)
+			{
+				odds += arr[i] + ", ";
+			}
+		}
+		if (odds == "")
+		{
+			odds = "Нечетных нет  ";
+		}
+		arithmeticAverage = sum / N;
+		document.write("Наибольшее значение массива: " + max + "</br>Наименьшее значение массива: " + min +
+										"</br>Общая сумма элементов: " + sum+ "</br>Среднее арифметическое элементов: " + arithmeticAverage +
+										"</br>Все нечетные значения массива: " + odds.substr(0, odds.length - 2));
 	</script>
 </head>
 <body>

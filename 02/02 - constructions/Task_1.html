@@ -6,7 +6,7 @@
 	<script type="text/javascript">
 		var A = + prompt("Введите число А"),
 				sum = 0,
-				odds = "В промежутке нет нечетных чисел  ",
+				odds = "",
 		    B = + prompt("Введите число B, B>A");
 		if ((A > B) || (A==B))
 		{
@@ -22,6 +22,10 @@
 					odds += i + ", ";
 				}
 			}
+		}
+		if (odds == "")
+		{
+			odds = "Нечетных нет  ";
 		}
 		document.write("Сумма чисел в промежутке = " +sum+ "</br> Все нечетные из промежутка - " +odds.substr(0, odds.length - 2));
 	</script>
