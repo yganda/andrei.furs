@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 3</title>
+	<script type="text/javascript">
+		var anArray = [2, 1, 1, 2, 3, 3, 2, 2, 2, 1],
+			  currentSequence = 1,
+			  longestSequence = 1,
+			  longestIndex,
+			  i;
+		for (i = 0; i < anArray.length-1; i++) 
+		{
+			if (anArray[i] == anArray[i + 1]) 
+			{
+				currentSequence++;
+			} 
+			else 
+			{
+				if (longestSequence < currentSequence) 
+				{
+					longestSequence = currentSequence;
+					longestIndex = i - currentSequence + 1;
+				}
+				currentSequence = 1;
+			}
+		}
+		console.log("Самая длинная последовательность повторяющихся элементов: " + anArray.slice(longestIndex, longestIndex + longestSequence));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
