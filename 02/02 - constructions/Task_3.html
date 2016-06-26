@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 3</title>
+	<script type="text/javascript">
+		var dot = "*",
+		space = "&nbsp";
+		document.write("Рисуем прямоугольник </br>");
+		for (var i = 0; i < 4; i++)
+		{
+			for (var j = 0; j < 8; j++)
+			{
+				if ((j == 0) || (j == 7) || (i == 0) || (i == 3))
+				{
+					document.write(dot);
+				}
+				else
+				{
+					document.write(space + space);
+				}
+			}
+			document.write("</br>");
+		}
+		document.write("Рисуем прямоугольный треугольник </br>");
+		for (var i = 0; i < 9 ; i++) 
+		{
+			for (var j = 0; j < 9; j++)
+			{
+				if ((i == j) || (i == 8) || (j == 0))
+				{
+					document.write(dot);
+				}
+				else
+				{
+					document.write(space + space);
+				}
+			}
+			document.write("</br>");
+		}
+		document.write("Рисуем равносторонний треугольник </br>");
+		for (var i = 0; i < 8 ; i++) 
+		{
+			for (var j = 0; j < 15; j++)
+			{
+				if ((j == (7-i)) || (j == (7+i)) || (i == 7))
+				{
+					document.write(dot);
+				}
+				else
+				{
+					document.write(space + space);
+				}
+			}
+			document.write("</br>");
+		}
+		document.write("Рисуем ромб</br>");
+		for (var i = 0; i < 15 ; i++) 
+		{
+			for (var j = 0; j < 15; j++)
+			{
+				if (i <= 7)
+				{
+					if ((j == (7-i)) || (j == (7+i)))
+					{
+						document.write(dot);
+					}
+					else
+					{
+						document.write(space + space);
+					}
+				}
+				else
+				{
+					if ((j == (i-7)) || (j == (21-i)))
+					{
+						document.write(dot);
+					}
+					else
+					{
+						document.write(space + space);
+					}
+				}
+			}
+			document.write("</br>");
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 1</title>
+	<script type="text/javascript">
+		var A = + prompt("Введите число А"),
+				sum = 0,
+				odds = "",
+		    B = + prompt("Введите число B, B>A");
+		if ((A > B) || (A==B))
+		{
+			document.write("Кажется что-то пошло не так, A должно быть меньше B!");
+		}
+		else
+		{
+			for (var i = A+1; i < B; i++)
+			{		
+				sum+=i;	
+				if (i % 2 != 0)
+				{
+					odds += i + ", ";
+				}
+			}
+		}
+		if (odds == "")
+		{
+			odds = "Нечетных нет  ";
+		}
+		document.write("Сумма чисел в промежутке = " +sum+ "</br> Все нечетные из промежутка - " +odds.substr(0, odds.length - 2));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
