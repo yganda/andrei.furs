@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 4</title>
+	<script type="text/javascript">
+		function person(firstName, lastName, age) 
+		{
+			return {
+				firstName: firstName,
+				lastName: lastName,
+				age: age
+			}
+		}
+		function findYoungest(arrayOfPersons)
+		{
+			var minAge = arrayOfPersons[0].age,
+					youngest = arrayOfPersons[0];
+			for (var i = 0; i < arrayOfPersons.length; i++)
+			{
+				if(minAge > arrayOfPersons[i].age)
+				{
+					youngest = arrayOfPersons[i];
+				}
+			}
+			return youngest.firstName + " " + youngest.lastName;
+		}
+		var persons = [
+		{ firstName : "Gosho", lastName: "Petrov", age: 32 },
+		{ firstName : "Bay", lastName: "Ivan", age: 15 },
+		{ firstName : "Leha", lastName: "Kartoha", age: 68 },
+		{ firstName : "Sania", lastName: "Parovoz", age: 12 }
+		];
+		console.log('Youngest person is: ' + findYoungest(persons));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
