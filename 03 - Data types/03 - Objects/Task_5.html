@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 5</title>
+	<script type="text/javascript">
+		function person(firstName, lastName, age) {
+			return {
+				firstName: firstName,
+				lastName: lastName,
+				age: age
+			}
+		}
+		function grouper(array, prop){
+			var result = new Object();
+			for (var person in array) {
+				if (result[array[person][prop]] == undefined || result[array[person][prop]] == null) {
+					result[array[person][prop]] = new Array();
+				}
+				result[array[person][prop]].push(array[person]);
+			}
+			return result;
+		}
+		var persons = [
+		{ firstName : "Gosho", lastName: "Petrov", age: 32 },
+		{ firstName : "Bay", lastName: "Ivan", age: 15 },
+		{ firstName : "Leha", lastName: "Kartoha", age: 68 },
+		{ firstName : "Sania", lastName: "Parovoz", age: 12 }
+		];
+		console.log("Group by First Name");
+		console.log(grouper(persons,"firstName"));
+		console.log("Group by Last Name");
+		console.log(grouper(persons,"lastName"));
+		console.log("Group by Age");
+		console.log(grouper(persons,"age"));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
