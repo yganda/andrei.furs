@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 1</title>
+	<script type="text/javascript">
+		function Point(x, y) 
+		{
+			this.x = x;
+			this.y = y;
+			this.getDistance = function (point) 
+			{
+				return Math.sqrt(Math.pow((this.x + point.x), 2) + Math.pow((this.y + point.y), 2));
+			}
+			this.toString = function () 
+			{
+				return "point (" + this.x + "," + this.y + ")";
+			}
+			this.clone = function () 
+			{
+				return new Point(this.x, this.y);
+			}
+		}
+
+		function Line(pointA, pointB) 
+		{
+			this.start = pointA.clone();
+			this.end = pointB.clone();
+			this.length = function () 
+			{
+				return this.start.getDistance(this.end);
+			}
+			this.toString = function () 
+			{
+				return "Line start " + this.start + ", Line end " + this.end;
+			}
+		}
+
+		function checkTriangle(pointA, pointB, pointC) 
+		{
+			return (pointA.length() + pointB.length()) > pointC.length() &&
+			(pointB.length() + pointC.length()) > pointA.length() &&
+			(pointA.length() + pointC.length()) > pointB.length();
+		}
+
+		var pointA = new Point(0, 0),
+        pointB = new Point(2, 4),
+        pointC = new Point(6, 3),
+        lineAB = new Line(pointA, pointB),
+        lineBC = new Line(pointB, pointC),
+        lineAC = new Line(pointA, pointC);
+        document.write("A: " + pointA);
+        document.write("</br>B: " + pointB);
+        document.write("</br>B: " + pointC);
+        document.write("</br>AB: " + lineAB + " AB length: " + lineAB.length());
+        document.write("</br>BC: " + lineBC + " BC length: " + lineBC.length());
+        document.write("</br>AC: " + lineAC + " AC length: " + lineAC.length());
+        document.write("</br>Can we make triangle? " + checkTriangle(lineAB,lineBC,lineAC));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
