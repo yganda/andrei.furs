@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 7</title>
+	<script type="text/javascript">
+		function parseURL(url) {
+			var protokol = url.substring(0, url.indexOf(":")),
+			server = url.substring(url.indexOf(":") + 3, url.indexOf("/", url.indexOf(":") + 3)),
+			resource = url.substr(url.indexOf("/", url.indexOf(":") + 3) + 1),
+			json = { "Protokol": protokol, "Server": server, "Resource": resource };
+			return { protocol: json.Protokol, server: json.Server, resource: json.Resource }
+		}
+		console.log(parseURL('http://www.tut.by/forum/index.php'));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
