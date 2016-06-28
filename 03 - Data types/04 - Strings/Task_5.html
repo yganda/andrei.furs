@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 5</title>
+	<script type="text/javascript">
+	function replaceSpaces(text, symbol) {
+			var result = '';
+			for (var i=0;i<text.length;i++) {
+				if (text[i] == ' ') {
+					result += symbol;
+				}
+				else {
+					result += text[i];
+				}
+			}
+			return result;
+		}
+
+		var text = "But I don’t want to go among mad people, Alice remarked. Oh, you can’t help that, said the Cat: we’re all mad here. I’m mad. You’re mad. How do you know I’m mad? said Alice. You must be, said the Cat, or you wouldn’t have come here.";
+		document.write("Some text: </br>" + text);
+		document.write("</br>Text with changes: </br>" + replaceSpaces(text, "&nbsp;"));	
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
