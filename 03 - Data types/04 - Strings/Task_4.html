@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 4</title>
+	<script type="text/javascript">
+		function caseUp(text)
+		{
+			var startIndex = text.indexOf("<upcase>");
+			while (startIndex>-1) {
+				var defText = text.substring(startIndex + 8, text.indexOf("</upcase>", startIndex))
+				var upperText = defText.toUpperCase();
+				text = text.replace(defText, upperText);
+				startIndex = text.indexOf("<upcase>", startIndex+1);
+			}
+			return text;
+		}
+		function caseLow(text) {
+			var startIndex = text.indexOf("<lowcase>");
+			while (startIndex > -1) {
+				var defText = text.substring(startIndex + 9, text.indexOf("</lowcase>", startIndex));
+				var lowerText = defText.toLowerCase();
+				text = text.replace(defText, lowerText);
+				startIndex = text.indexOf("<lowcase>", startIndex + 1);
+			}
+			return text;
+		}
+		function caseMix(text) {
+			var startIndex = text.indexOf("<mixcase>");
+			while (startIndex > -1) {
+				var defText = text.substring(startIndex + 9, text.indexOf("</mixcase>", startIndex));
+				var mixedText = new String(defText);
+				for (var i = 0; i < mixedText.length ; i++) {
+					if(i%2==0)
+					{
+						mixedText = mixedText.replace(mixedText[i],mixedText[i].toUpperCase())
+					}
+					else {
+						mixedText = mixedText.replace(mixedText[i], mixedText[i].toLowerCase())
+					}
+				}
+				text = text.replace(defText, mixedText);
+				startIndex = text.indexOf("<mixcase>", startIndex + 1);
+			}
+			return text;
+		}
+
+		function tagCases(text){
+			return caseLow(caseMix(caseUp(text)));
+		}
+
+		var text = "We are <mixcase>living</mixcase> in a <upcase>yellow submarine</upcase>. We <mixcase>don't</mixcase> have <lowcase>anything</lowcase> else.";
+		document.write(text + "</br></br>");
+		document.write(tagCases(text));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
