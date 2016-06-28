@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 2</title>
+	<script type="text/javascript">
+		function checkBrackets(exp) {
+			var brackets = 0;
+			for (var a in exp) {
+				if (exp[a] == '(') {
+					brackets++;
+				}
+				if (exp[a] == ')') {
+					brackets--;
+				}
+				if (brackets < 0) {
+					return false;
+				}
+			}
+			if (brackets == 0) {
+				return true;
+			} else return false;
+		}
+
+		var expression = prompt("Enter expression: ");
+		console.log(checkBrackets(expression));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
