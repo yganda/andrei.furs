@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 4</title>
+	<script type="text/javascript">
+		var fibo = function fibonachi(n) {
+			var fibonacci = [0, 1],
+					SQ = Math.sqrt(5),
+					A = (1 + SQ) / 2,
+					B = (1 - SQ) / 2;		 
+			for (let i = 2; i < n; i ++) {
+				fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
+			}
+			document.write("Array of n fibonachi numbers " + fibonacci.slice(0,n));
+			document.write("</br>N's fibonachi number " + Math.round((Math.pow(A, n-1) - Math.pow(B, n-1)) / SQ) + "</br>");
+		};
+		var a = +prompt("Enter fibonachi number");
+		fibo(a);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
