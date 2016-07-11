@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 9</title>
+	<script type="text/javascript">
+		function toConsole(a){
+			console.log(a);
+		}
+		function toAlert(a){
+			alert(a);
+		}
+		function splitToWords(msg, callback){
+			var arr = [];
+			arr = msg.split(" ");
+			if(typeof callback === "undefined"){
+				return arr;
+			}
+			if(callback == toConsole){
+				return toConsole(arr);
+			}
+			if(callback == toAlert){
+				return toAlert(arr);
+			}
+		}
+		splitToWords("My very long text msg", toConsole);
+		splitToWords("My very long text msg", toAlert);
+		console.log( splitToWords("My very long text msg") );
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
