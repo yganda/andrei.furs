@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 7</title>
+	<script type="text/javascript">
+		function find(testString, test){
+			if(typeof test === "undefined"){
+				test = testString;
+			}
+			return testString.indexOf(test);
+		}
+		var testString1 = "abc", test1 = "b", testString2 = "abc", testString3 = "abc", test3 = "d", testString4 = "abc",
+		test4 = "a", test41 = "b";
+		console.log(find(testString1,test1));
+		console.log(find(testString2));
+		console.log(find(testString3,test3));
+		console.log(find(testString4,test4,test41));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
