@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 1</title>
+	<script>
+		function nameValidator(name){
+			var NAME_REGEXP = /^[a-zA-Z]+/;
+			if (typeof name !== 'string') {
+				throw 'Name must be a string!';
+			} 
+			if (!NAME_REGEXP.test(name) || name.length < 3 || name.length > 20) {
+				throw 'Name must be betwen 3 and 20 chars, Name contains only Latin letters!';
+			} else {
+				return name;
+			}
+		}
+		function ageValidator(age){
+			let AGE_REGEXP = /^(0|[1-9][0-9]?|1[1-4][0-9]|150)$/;
+			if(AGE_REGEXP.test(age)){
+				return age;
+			}
+			else{
+				throw 'Age must be between 0-150 inclusive and contain only numbers!';
+			}
+		}
+		function Person(firstname, lastname, age){
+			this.firstname = nameValidator(firstname);
+			this.lastname = nameValidator(lastname);
+			this.age = ageValidator(age);
+		}
+		Person.prototype.get = function() {
+			return this.firstname + ' ' + this.lastname;
+		};
+		Person.prototype.set = function(fullname) {
+			var fname = fullname.split(' ');
+			this.firstname = nameValidator(fname[0]);
+			this.lastname = nameValidator(fname[1]);
+		};
+		Person.prototype.introduce = function() {
+			return 'Hello! My name is ' + this.get() + ' and I am ' + this.age + ' years-old';
+		};
+
+		var whoAmI = new Person('Andrei', 'Furs', 23);
+		console.log(whoAmI.introduce());
+		whoAmI.set('New Name');
+		console.log(whoAmI.introduce());
+		console.log(whoAmI.get());
+	</script>
+</head>
+<body>
+</body>
+</html>
