@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 2</title>
+	<script type="text/javascript" src = "node_modules/lodash/lodash.js"></script>
+	<script>
+		var domElement = {
+			init: function(type){
+				var that = this,
+				ELEMENT_REGEXP = /^[a-zA-Z0-9]+/;
+				if(ELEMENT_REGEXP.test(type)){
+					that.type = type;
+				}
+				else{
+					throw 'This type is not valid';
+				}
+				that.parent = null;
+				that.childrens = [];
+				that.attributes = [];
+				that.content = '';
+				Object.defineProperty(this, 'innerHTML',{ 
+					get: function() {
+						var eAttrs = '',
+						eChilds = '',
+						eContent = '';
+						if(that.childrens.length === 0 ){
+							eContent = that.content;
+						}
+						_.forEach(that.attributes, function(attribute) {
+							eAttrs += ' ' + attribute.name + '="' + attribute.value +'"';
+						});
+						if (typeof that.childrens === 'object') {
+							_.forEach(that.childrens, function(child) {
+								eChilds += child.innerHTML;
+							});
+						} else {
+							eChilds += that.childrens;
+						}
+						var str = '<' + that.type + eAttrs + '>' + eContent + eChilds + '</' + that.type + '>'
+						return str; 
+					}
+				});
+				return this;
+			},
+			appendChild: function(child) {
+				child.parent = this;
+				this.childrens.push(child);
+				return this;
+			},
+			addAttribute: function(attrName, attrVal) {
+				var ATTRIBUTE_REGEXP = /^[a-zA-Z0-9-]+$/;
+				if (ATTRIBUTE_REGEXP.test(attrName)) {
+					this.attributes.push({
+						name: attrName,
+						value : attrVal
+					});
+				} else {
+					throw 'Attribute has invalid name.'
+				}
+				return this;
+			},
+			removeAttribute: function(attrName) {
+				for (let i = 0; i < this.attributes.length - 1; i++) {
+					if (this.attributes[i].hasOwnProperty(attrName)) {
+						this.attributes.splice(i,1);
+						return this;
+					}
+					else{
+						throw "Attribute doesn't exist.";
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
