@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 3</title>
+	<script type="text/javascript">
+		function subCount(text, sub) {
+			var text = text.toLowerCase(),
+			sub = sub.toLowerCase(),
+			subIndex = text.indexOf(sub),
+			count = 0;
+			while (subIndex > -1) {
+				count++;
+				subIndex = text.indexOf(sub, subIndex + 1);
+			}
+			return count;
+		}
+		var text  = "The text is as follows: We are liv<b>in</b>g **in** an yellow submar<b>in</b>e. We don't have anyth<b>in</b>g else. **In**side the submar<b>in</b>e is very tight. So we are dr<b>in</b>k<b>in</b>g all the day. We will move out of it **in** 5 days.",
+		substr = "**in**";
+		document.write(text + "</br>");
+		document.write(substr + "</br>");
+		document.write("Count substr: " + subCount(text,substr));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

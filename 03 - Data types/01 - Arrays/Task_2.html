@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 2</title>
+	<script type="text/javascript">
+		var firstArray = (prompt ("Введите элементы первого массива. В качестве разделителя используйте запятую:", defaultText="")).split(''), 
+		secondArray = (prompt ("Введите элементы второго массива. В качестве разделителя используйте запятую:", defaultText="")).split(''),
+		trolse = 0;
+		if (firstArray.length != secondArray.length)
+		{
+			console.log("Массивы не равны");
+			trolse = 1;
+		}
+		else
+		{
+			for (var i = 0; i<firstArray.length; i++)
+			{
+				if ((firstArray[i].charCodeAt(0) -  secondArray[i].charCodeAt(0)) != 0)
+				{
+					console.log("Массивы не равны");
+					trolse = 1;
+					break;
+				}
+			}
+		}
+		if (trolse == 0)
+		{
+			console.log("Массивы равны");
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

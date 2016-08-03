@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 3</title>
+	<script type="text/javascript">
+		function deepCopy(obj) 
+		{
+			if ((obj == null) || (typeof obj != "object")) 
+			{
+				return obj;
+			}
+			if (obj instanceof Array)
+			{
+				var arrayCopy = new Array();
+				for (var i = 0; i < obj.length; i++) 
+				{
+					arrayCopy[i] = deepCopy(obj[i]);
+				}
+				return arrayCopy;
+			}
+			if (obj instanceof Object) 
+			{
+				var objectCopy = new Object();
+				for (var attribute in obj) 
+				{
+					if (obj.hasOwnProperty(attribute)) 
+					{
+						objectCopy[attribute] = deepCopy(obj[attribute]);
+					}
+				}
+				return objectCopy;
+			}
+		}
+
+		var student = 
+		{
+			firstName: "Iavn",
+			lastName: "Ivanov",
+			age: "22",
+			faculty: "Mathematical"
+		}
+		var cloneOfIvan = deepCopy(student);
+		document.write("Original object: ");
+		for (key in student) {
+			document.write("</br>" + student[key]);
+		}
+		document.write("</br>Copied object: ");
+		for (key in cloneOfIvan) {
+			document.write("</br>" + cloneOfIvan[key]);
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

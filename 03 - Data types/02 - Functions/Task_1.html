@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 1</title>
+	<script type="text/javascript">
+	function numberToString(num)
+	{
+		var lastNum = num % 10;
+		switch (lastNum) 
+		{
+			case 0:
+			return "The last number: Null";
+			case 1:
+			return "The last number: One";
+			case 2:
+			return "The last number: Two";
+			case 3:
+			return "The last number: Three";
+			case 4:
+			return "The last number: Four";
+			case 5:
+			return "The last number: Five";
+			case 6:
+			return "The last number: Six";
+			case 7:
+			return "The last number: Seven";
+			case 8:
+			return "The last number: Eight";
+			case 9:
+			return "The last number: Nine";
+			default:
+			return "Wrong input!";
+		}
+	}
+	var number = +prompt("Enter number: ");
+	console.log(numberToString(number));
+</script>
+</head>
+<body>
+	
+</body>
+</html>

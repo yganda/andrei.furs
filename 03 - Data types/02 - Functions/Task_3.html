@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 3</title>
+	<script type="text/javascript">
+		function occurrenceInText(text, word, sensitiveFlag)
+		{
+			if (!sensitiveFlag) 
+			{
+				text = text.toLowerCase();
+				word = word.toLowerCase();
+			}
+			var startIndex = 0;
+			var required = 0;
+			while (true) 
+			{
+				startIndex = text.indexOf(word, startIndex);
+				if (startIndex == -1) {
+					break;
+				}
+				else 
+				{
+					startIndex += word.length;
+					required++;
+				}
+			}
+			return required;
+		} 
+		var someText = "lorem	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui eligendi, eum quasi quaerat ullam laborum laudantium eos, quo accusantium dignissimos earum dolorum, alias ea quibusdam tempore autem id fugiat iure. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore sunt quisquam perspiciatis non nostrum ipsum fugit sapiente ipsa vel ipsam. Rem ratione consequatur assumenda architecto suscipit animi nulla commodi nisi! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat atque aut natus quos iure incidunt alias ratione eius recusandae consectetur, et earum deserunt vero dolorem laboriosam! Et dolores, earum quam. lorem ipsum dolor sit amet, consectetur adipisicing elit. Est veritatis laboriosam nisi illo dolorem dolorum! Voluptates atque porro delectus? Magni aspernatur dolores atque repudiandae. Tenetur alias numquam dolore, sed ipsam?";
+		document.write("We have some text below: </br>" + someText);
+		var requiredWord = prompt("Enter the word from text on the page");
+		document.write("</br>Number of coincidence with case sensitive: " + occurrenceInText(someText, requiredWord, true) + 
+			"</br> Number of coincidence without case sensitive: " + occurrenceInText(someText, requiredWord));
+		</script>
+	</head>
+	<body>
+
+	</body>
+	</html>

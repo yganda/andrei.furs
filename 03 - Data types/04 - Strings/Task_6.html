@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 6</title>
+	<script type="text/javascript">
+		function tagKiller(text) {
+			return text.replace(/<(.*?)>/g, '')
+		}
+		var text = "<html><head><title>Sample site</title></head><body><div>text<div>more text</div>and more...</div>in body</body><html>";
+		document.write(text);
+		document.write("</br>" + tagKiller(text));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
