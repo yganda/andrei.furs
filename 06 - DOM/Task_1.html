@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task 1</title>
+  <script>
+    function countQuery(){
+      var nodes = document.querySelectorAll('div > div');
+    	for (let i = 0; i < nodes.length; i++) {
+    		nodes[i].style.background = 'red';
+        nodes[i].style.color = 'green';
+      }
+    }
+    function countTagName(){
+      var nodes = document.getElementsByTagName('div');
+      	for (let i = 0; i < nodes.length; i++) {
+      		nodes[i].style.background = 'green';
+          nodes[i].style.color = 'red';
+      }
+    }
+    function inputToConsole(){
+      var value = document.getElementById('input').value;
+      console.log(value);
+    }
+    function colorToBody(){
+      var color = document.getElementById('color').value;
+      document.body.style.background = color;
+    }
+  </script>
+</head>
+<body>
+  <div>
+      <div>asdadsasd</div>
+  </div>
+  <div>
+    <div>
+      <div>asasdasd</div>
+        <div>
+          <div>asdasdasd</div>
+        </div>
+    </div>
+  </div>
+<button onclick="countQuery()">countQueryTest</button>
+<button onclick="countTagName()">countTagNamesTest</button>
+<div>
+  <input type="text" id = "input">
+  <button onclick="inputToConsole()">InputToConsole</button>
+</div>
+<div>
+  <input type="text" id = "color">
+  <button onclick="colorToBody()">colorToBody</button>
+</div>
+</body>
+</html>
