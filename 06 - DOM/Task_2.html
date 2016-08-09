@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task 2</title>
+  <script src = "./node_modules/lodash/lodash.min.js"></script>
+  <script>
+  var i = 0;
+  function createDivs(){
+    for(i; i < document.getElementById('countDiv').value; i++){
+      let elem = document.createElement('div');
+      elem.id = 'elem' + i;
+      elem.innerHTML = '<strong>div</strong>';
+      elem.style.zIndex = -1;
+      elem.style.width = _.random(20, 100) +'px';
+      elem.style.height = _.random(20, 100) +'px';
+      elem.style.backgroundColor = 'rgb(' + _.random(0, 255) + ','+ _.random(0, 255) +','+ _.random(0, 255) +')';
+      elem.style.color = 'rgb(' + _.random(0, 255) + ','+ _.random(0, 255) +','+ _.random(0, 255) +')';
+      elem.style.position = 'absolute';
+      elem.style.left = _.random(0, window.innerWidth) + 'px';
+      elem.style.top = _.random(0, window.innerHeight) + 'px';
+      elem.style.borderRadius = _.random(0, 50) + 'px';
+      elem.style.borderStyle = 'solid';
+      elem.style.borderWidth = _.random(1, 20) + 'px';
+      elem.style.borderColor = 'rgb(' + _.random(0, 255) + ','+ _.random(0, 255) +','+ _.random(0, 255) +')';
+      document.body.appendChild(elem);
+    }
+  }
+  function circle(){
+    var mainElem = document.createElement('div');
+    mainElem.id = 'wrap';
+    document.body.appendChild(mainElem);
+    for(let i = 0; i < 5; i++){
+      let elem = document.createElement('div');
+      elem.classList.add('elem');
+      elem.style.position = 'absolute';
+      elem.style.height = 50 + 'px';
+      elem.style.width = 50 + 'px';
+      elem.style.backgroundColor = 'red';
+      elem.style.borderRadius = 50 + '%';
+      elem.style.margin = 10 + '%';
+      wrap.insertBefore(elem, wrap.children[i]);
+    }
+    var go = (function() {
+      var currentPosition = 0;
+      return function(elems) {
+        var step = 2 * Math.PI / 5;
+        for (let i = 0; i < 5; i++) {
+          elems[i].style.left = Math.cos(currentPosition + (i * step)) * 50 + 'px';
+          elems[i].style.top  = Math.sin(currentPosition + (i * step)) * 50 + 'px';
+        }
+        currentPosition += 0.2;
+      }
+    }());
+    (function animate() {
+      go(document.querySelectorAll('.elem'));
+      setTimeout(animate,100);
+    }());
+  }
+  function tColorChanger(){
+     document.querySelector("textarea").style.color = document.getElementById('first-color').value;
+  }
+  function tBgChanger(){
+     document.querySelector("textarea").style.backgroundColor = document.getElementById('sec-color').value;
+  }
+  function tags(){
+    var tags = [
+        "cms", "javascript", "js", "ASP.NET MVC", ".net", ".net", "css", "wordpress", "xaml", "js", "http",
+        "web", "asp.net", "asp.net MVC", "ASP.NET MVC", "wp", "javascript", "js", "cms", "html", "javascript",
+        "http", "http", "CMS"
+     ];
+     var tagCloud = generateTagCloud(tags, 17, 42);
+  }
+
+  function generateTagCloud(arr, minSize, maxSize){
+    var tagsMap = {};
+		for (var i = 0; i < arr.length; i++) {
+			var value = arr[i].toLowerCase();
+			if (tagsMap[value] === undefined) {
+				tagsMap[value] = minSize;
+				this.size++;
+			} else {
+				if (tagsMap[value] < maxSize) {
+					tagsMap[value] += 4;
+				};
+			}
+		}
+		draw(tagsMap);
+  }
+function draw(tagsMap) {
+  console.log(tagsMap);
+  _.forEach(tagsMap, function(tagVal, tagName){
+    var newTag = document.createElement('div');
+    newTag.innerText = tagName;
+    newTag.style.fontSize = tagVal + 'px';
+    var tagCloud = document.getElementById('tagCloud');
+    tagCloud.appendChild(newTag);
+  });
+}
+  </script>
+</head>
+<body>
+  <div>
+    <input type="text" id = "countDiv" placeholder="Enter number divs">
+    <button onclick="createDivs()">Create!!!</button>
+  </div>
+  <button onclick="circle()">Circles!</button>
+  <div>
+    <textarea name="name" rows="8" cols="40"></textarea>
+    <input type="color" id="first-color" onchange="tColorChanger()">
+    <input type="color" id="sec-color" onchange="tBgChanger()">
+  </div>
+  <div>
+    <button onclick="tags()">Tags!</button>
+    <div id='tagCloud'></div>
+  </div>
+</body>
+</html>
