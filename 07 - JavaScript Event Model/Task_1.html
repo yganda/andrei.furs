@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task 1</title>
+  <!--<script type = "text/javascript" src = "./node_modules/lodash/lodash.min.js"></script>-->
+  <style>
+    #sider {
+      width: 942px;
+      height: 343px;
+    }
+    .larr {
+	    height: 343px;
+    	line-height: 343px;
+    	font-size: 58px;
+    	font-weight: 900;
+    	position: absolute;
+    	background: rgba(255,255,255,0.3);
+    	width: 43px;
+    	text-align: center;
+    	cursor: pointer;
+    }
+    .rarr {
+    	height: 343px;
+    	line-height: 343px;
+    	font-size: 58px;
+    	font-weight: 900;
+    	position: absolute;
+    	background: rgba(255,255,255,0.3);
+    	width: 43px;
+    	text-align: center;
+    	cursor: pointer;
+    	margin-left: 899px;
+    	margin-top: -348px;
+    }
+    .rarr:hover, .larr:hover {
+      background: rgba(0,0,0,0.3);
+      color: #ffffff;
+    }
+    .slide{
+      display: none;
+    }
+    .slide[current] {
+    	display: block;
+    }
+  </style>
+  <script>
+    var snode = document.getElementsByClassName("slide"),
+        start = 0;
+    function right(){
+      for(let i = 0; i < snode.length; i++){
+        if(snode[i].hasAttribute("current") && i < (snode.length-1)){
+           snode[i].removeAttribute("current");
+           snode[i+1].setAttribute("current", 0);
+           break;
+        }
+        if(snode[i].hasAttribute("current") && i == (snode.length-1)){
+           snode[i].removeAttribute("current");
+           snode[0].setAttribute("current", 0);
+           break;
+        }
+      }
+    }
+    function left(){
+      for(let i = snode.length-1; i => 0; i--){
+        if(snode[i].hasAttribute("current") && i > 0){
+           snode[i].removeAttribute("current");
+           snode[i-1].setAttribute("current", 0);
+           break;
+        }
+        if(snode[i].hasAttribute("current") && i == 0){
+           snode[i].removeAttribute("current");
+           snode[snode.length-1].setAttribute("current", 0);
+           break;
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+<div id="sider">
+  <div class="larr" onclick="left()">&lt;</div>
+  <div class="slide" current><img src="./slider/slide1.jpg" alt=""></div>
+  <div class="slide"><img src="./slider/slide2.jpg" alt=""></div>
+  <div class="slide"><img src="./slider/slide3.jpg" alt=""></div>
+  <div class="rarr" onclick="right()">&gt;</div>
+</div>
+</body>
+</html>
