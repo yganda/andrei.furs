@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task 3</title>
+</head>
+<body>
+  <canvas id='example'>Обновите браузер</canvas>
+		<script>
+			var example = document.getElementById("example"),
+			    ctx     = example.getContext('2d');
+			example.height = 1000;
+			example.width  = 1000;
+      function drawEllipse(centerX, centerY, width, height, line, bgr) {
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY - height/2); // A1
+        ctx.bezierCurveTo(
+            centerX + width/2, centerY - height/2, // C1
+            centerX + width/2, centerY + height/2, // C2
+            centerX, centerY + height/2); // A2
+        ctx.bezierCurveTo(
+            centerX - width/2, centerY + height/2, // C3
+            centerX - width/2, centerY - height/2, // C4
+            centerX, centerY - height/2); // A1
+        ctx.fillStyle = bgr;
+        ctx.strokeStyle = line;
+        ctx.lineWidth = 3;
+          ctx.fill();
+          ctx.stroke();
+          ctx.closePath();
+      }
+      ctx.fillStyle = '#975b5b';
+      ctx.strokeStyle = '#000000';
+      ctx.lineWidth = 3;
+      ctx.fillRect(25,300,454,300);
+      //roof
+        ctx.beginPath();
+        ctx.moveTo(25,300);
+        ctx.lineTo(255,54);
+        ctx.lineTo(479,300);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(25, 300);
+        ctx.lineTo(255, 54);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(255, 54);
+        ctx.lineTo(479, 300);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(25, 300);
+        ctx.lineTo(479, 300);
+        ctx.stroke();
+        ctx.closePath();
+      //tube
+        ctx.fillRect(340,100,48,120);
+
+        ctx.beginPath();
+        ctx.moveTo(340, 100);
+        ctx.lineTo(340, 240);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(388, 100);
+        ctx.lineTo(388, 240);
+        ctx.stroke();
+        ctx.closePath();
+
+        drawEllipse(364, 100, 65, 15, '#000000', '#975b5b');
+
+      //main house
+        ctx.beginPath();
+        ctx.moveTo(25, 300);
+        ctx.lineTo(25, 600);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(25, 601);
+        ctx.lineTo(479, 601);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(479, 601);
+        ctx.lineTo(479, 300);
+        ctx.stroke();
+        ctx.closePath();
+
+      //windows
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(55,340,75,50);
+        ctx.fillRect(133,340,75,50);
+        ctx.fillRect(55,393,75,50);
+        ctx.fillRect(133,393,75,50);
+
+        ctx.fillRect(283,340,75,50);
+        ctx.fillRect(361,340,75,50);
+        ctx.fillRect(283,393,75,50);
+        ctx.fillRect(361,393,75,50);
+
+        ctx.fillRect(283,526,75,50);
+        ctx.fillRect(361,526,75,50);
+        ctx.fillRect(283,473,75,50);
+        ctx.fillRect(361,473,75,50);
+      //door
+        ctx.fillStyle = '#975b5b';
+        ctx.beginPath();
+        ctx.moveTo(60, 601);
+        ctx.lineTo(60, 500);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(130, 601);
+        ctx.lineTo(130, 460);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(200, 601);
+        ctx.lineTo(200, 500);
+        ctx.stroke();
+        ctx.closePath();
+
+        drawEllipse(110, 550, 18, 15, '#000000', '#975b5b');
+        drawEllipse(150, 550, 18, 15, '#000000', '#975b5b');
+
+        ctx.beginPath();
+        ctx.moveTo(60, 500);
+        ctx.quadraticCurveTo(90, 460, 131, 460);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(200, 500);
+        ctx.quadraticCurveTo(180, 460, 131, 460);
+        ctx.stroke();
+        ctx.closePath();
+		</script>
+</body>
+</html>
