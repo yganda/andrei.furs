@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task 2</title>
+</head>
+<body>
+  <canvas id='example'>Обновите браузер</canvas>
+		<script>
+			var example = document.getElementById("example"),
+			    ctx     = example.getContext('2d');
+			example.height = 1000;
+			example.width  = 1000;
+      function drawEllipse(centerX, centerY, width, height, line, bgr) {
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY - height/2); // A1
+        ctx.bezierCurveTo(
+            centerX + width/2, centerY - height/2, // C1
+            centerX + width/2, centerY + height/2, // C2
+            centerX, centerY + height/2); // A2
+        ctx.bezierCurveTo(
+            centerX - width/2, centerY + height/2, // C3
+            centerX - width/2, centerY - height/2, // C4
+            centerX, centerY - height/2); // A1
+        ctx.fillStyle = bgr;
+        ctx.strokeStyle = line;
+        ctx.lineWidth = 3;
+          ctx.fill();
+          ctx.stroke();
+          ctx.closePath();
+      }
+      //draw wheels
+      drawEllipse(120,300,265,190,'#317b8d','#90cad7');
+      drawEllipse(540,300,265,190,'#317b8d','#90cad7');
+      //draw other bike
+      ctx.beginPath();
+      ctx.moveTo(250, 250);
+      ctx.lineTo(360, 340);
+      ctx.stroke();
+      ctx.closePath();
+
+      drawEllipse(310,295,80,56,'#317b8d', '#ffffff');
+
+      ctx.beginPath();
+      ctx.moveTo(120, 300);
+      ctx.lineTo(310, 300);
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.moveTo(310, 300);
+      ctx.lineTo(230, 120);
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.moveTo(120, 300);
+      ctx.lineTo(243, 150);
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.moveTo(243, 150);
+      ctx.lineTo(520, 150);
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.moveTo(310, 300);
+      ctx.lineTo(520, 150);
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.moveTo(540, 300);
+      ctx.lineTo(512, 90);
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.moveTo(512, 90);
+      ctx.lineTo(580, 30);
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.moveTo(512, 90);
+      ctx.lineTo(430, 95);
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.moveTo(170, 120);
+      ctx.lineTo(290, 120);
+      ctx.stroke();
+      ctx.closePath();
+
+		</script>
+</body>
+</html>
