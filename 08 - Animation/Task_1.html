@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task 1</title>
+</head>
+<body>
+  <canvas id='example'>Обновите браузер</canvas>
+		<script>
+			var example = document.getElementById("example"),
+			    ctx     = example.getContext('2d');
+			example.height = 500;
+			example.width  = 300;
+      function drawEllipse(centerX, centerY, width, height, line, bgr) {
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY - height/2); // A1
+        ctx.bezierCurveTo(
+            centerX + width/2, centerY - height/2, // C1
+            centerX + width/2, centerY + height/2, // C2
+            centerX, centerY + height/2); // A2
+        ctx.bezierCurveTo(
+            centerX - width/2, centerY + height/2, // C3
+            centerX - width/2, centerY - height/2, // C4
+            centerX, centerY - height/2); // A1
+        ctx.fillStyle = bgr;
+        ctx.strokeStyle = line;
+        ctx.lineWidth = 3;
+          ctx.fill();
+          ctx.stroke();
+          ctx.closePath();
+      }
+      drawEllipse(110, 200, 252, 170, "#22545f", "#90cad7");//give me your head
+      drawEllipse(47, 180, 39, 20, "#22545f", "#90cad7");//give me your left eye
+      drawEllipse(112, 180, 39, 20, "#22545f", "#90cad7");//give me your right eye
+      drawEllipse(44, 180, 12, 16, "#22545f", "#22545f");//give me your left pupil
+      drawEllipse(109, 180, 12, 16, "#22545f", "#22545f");//give me your right pupil
+      //draw noose
+        ctx.beginPath();
+        ctx.moveTo(85, 180);
+        ctx.lineTo(65, 220);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(65, 220);
+        ctx.lineTo(90, 220);
+        ctx.stroke();
+        ctx.closePath();
+
+      //draw tooth
+        ctx.beginPath();
+  			ctx.moveTo(55, 240);
+  			ctx.quadraticCurveTo(80, 220, 120, 255);
+  			ctx.moveTo(55, 240);
+  			ctx.quadraticCurveTo(80, 280, 120, 255);
+  			ctx.stroke();
+        
+      //draw kettle hat
+      drawEllipse(108, 132, 280, 45, "#262626", "#396693");
+      drawEllipse(108, 112, 140, 40, "#262626", "#396693");
+      ctx.fillRect(54, 30, 107, 80);
+        ctx.beginPath();
+  			ctx.moveTo(56, 114);
+  			ctx.lineTo(56, 30);
+  			ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+  			ctx.moveTo(160, 114);
+  			ctx.lineTo(160, 30);
+  			ctx.stroke();
+        ctx.closePath();
+      drawEllipse(108, 30, 140, 40, "#262626", "#396693");
+      //  ctx.beginPath();
+      //  ctx.moveTo();
+		</script>
+</body>
+</html>
