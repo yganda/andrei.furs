@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task 2</title>
+</head>
+<body>
+  <form id="todo">
+  	<input type="text" id="input" placeholder="Enter you task" value="">
+  	<button type="button" onclick = "addTask(event)" id="add">Add</button>
+  	<button type="button" onclick = "hideTask()" id="hide">Hide</button>
+  	<button type="button" onclick = "showTask()" id="show">Show</button>
+  	<button type="button" onclick = "delTask()" id="del">Delete</button>
+  </form>
+  <div id="tasks"></div>
+  <script>
+    var tasks = document.getElementById('tasks').children,
+        i = tasks.length + 1;
+
+    function addTask(event) {
+    	event.preventDefault();
+    	var inputVal = document.getElementById('input').value;
+    	if (inputVal !== '') {
+    		document.getElementById('input').value = '';
+    		var tasks = document.getElementById('tasks');
+    		var task = document.createElement('div');
+    		  task.classList.add('task');
+    		var checkbox = document.createElement('input');
+        	checkbox.type = 'checkbox';
+        	checkbox.setAttribute('id', "id"+i);
+      	var label = document.createElement('label');
+        	label.setAttribute('for', "id"+i);
+        	label.innerText = inputVal;
+    		task.appendChild(checkbox);
+    		task.appendChild(label);
+    		tasks.appendChild(task);
+        i++;
+    	}
+    }
+
+    function hideTask() {
+    	var tasks = document.getElementById('tasks');
+    	var hidden = document.querySelectorAll('input:checked');
+    	for (let i = 0; i < hidden.length; i++) {
+    		hidden[i].parentNode.style.display = 'none';
+    		hidden[i].checked = false;
+    	}
+    }
+
+    function showTask() {
+      for (let i = 0; i < tasks.length; i++) {
+      	if ( tasks[i].style.display === 'none') {
+      		tasks[i].style.display = 'block';
+      	}
+      }
+    }
+
+    function delTask() {
+    	var tasks = document.getElementById('tasks');
+    	var deleted = document.querySelectorAll('input:checked');
+    	for (let i = 0; i < deleted.length; i++) {
+    		tasks.removeChild(deleted[i].parentNode);
+    	}
+    }
+  </script>
+  </body>
+</html>
