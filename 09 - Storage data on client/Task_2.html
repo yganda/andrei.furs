@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sheeps and Rams - The Game</title>
+  <style>
+  .user {
+    width: 277px;
+    float: left;
+  }
+  #dashboard {
+      float: right;
+      width: 500px;
+  }
+  .username div {
+  	float: left;
+  }
+
+  .username {
+  	width: 400px;
+  	float: left;
+  }
+  .username div {
+  	float: left;
+  	width: 48%;
+  	border: 1px solid;
+  }
+  #gameRes {
+  	float: left;
+  	margin-top: 20px;
+  }
+  </style>
+</head>
+<body>
+  <div class="user">
+    <input type="text" id = "user_num"/>
+    <button onclick="endTurn()">Check my num!</button>
+  </div>
+  <div id="dashboard"></div>
+  <div id="gameRes"></div>
+<script>
+  var rams = 0,
+      sheeps = 0,
+      turn = 1,
+      rand;
+  function match(arr){
+    for(let i = 0; i<arr.length; i++){
+      for(let j=0; j<arr.length; j++){
+        if(arr[i] == arr[j] && i!=j){
+          return 0;
+        }
+      }
+    }
+    return 1;
+  }
+  function endTurn(){
+    var userNum = document.getElementById('user_num').value;
+    var temp = userNum.split('');
+    var trams = 0;
+    var tsheeps = 0;
+    if(userNum && !isNaN(+userNum) && (+userNum) >= 1000 && (+userNum) <= 9999 && match(temp)){
+      var uNum = userNum.split(''),
+          gNum = rand.split(''),
+          ramsMas = [],
+          sheepsMas = [];
+      for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++) {
+          if(gNum[j] == uNum[i]){
+              if(i == j){
+                trams += 50;
+                ramsMas[ramsMas.length] = uNum[i];
+              }
+              else{
+                tsheeps += 25;
+                sheepsMas[sheepsMas.length] = uNum[i];
+              }
+          }
+        }
+      }
+      rams += trams / turn;
+      sheeps += tsheeps / turn;
+      var results = document.getElementById('gameRes');
+      var ramsR = document.createElement('div');
+      var sheepsR = document.createElement('div');
+      var turnR = document.createElement('div');
+      turnR.classList.add('turn');
+      turnR.innerHTML = 'Turn ' + turn;
+      ramsR.classList.add('rams');
+      ramsR.innerHTML = 'Rams in turn ' + rams + ' match rams ' + ramsMas.join(', ');
+      sheepsR.classList.add('sheeps');
+      sheepsR.innerHTML = 'Sheeps in turn ' + sheeps + ' match sheeps ' + sheepsMas.join(', ');
+      results.appendChild(turnR);
+      results.appendChild(ramsR);
+      results.appendChild(sheepsR);
+      turn++;
+      if(ramsMas.length == 4){
+        //localStorage.clear();
+        var user = prompt('Congrats! You game is finish! Enter you name');
+        var obj = { "userName": user, "sheeps": sheeps, "rams": rams, "totalScore": sheeps+rams };
+        var sObj = JSON.stringify(obj);
+        localStorage.setItem("user" + localStorage.length, sObj);
+        location.reload();
+      }
+    }
+    else{
+      alert("Please enter your number! This is between 1000 and 9999. All number will be different!");
+    }
+  }
+
+  function find(array, value) {
+    for (var i = 0; i < array.length; i++) {
+      if (array[i] == value) return true;
+    }
+    return false;
+  }
+
+  window.onload = function(){
+    rand = 0.5 + Math.random() * 9;
+    rand = Math.round(rand);
+    var mas = [];
+    mas[mas.length] = rand;
+    while(mas.length < 4) {
+      let elem = - 0.5 + Math.random() * 10;
+      elem = Math.round(elem);
+      if(!find(mas,elem)){
+        mas[mas.length] = elem;
+      }
+    }
+    rand = mas.join('');
+    //var gameNum = document.getElementById('game_number');
+    //console.log(rand);
+    var dashboard = document.getElementById('dashboard');
+    for (var i = 0; i < localStorage.length; i++) {
+      var user = document.createElement('div');
+      user.classList.add('username');
+      var username = document.createElement('div');
+      var totalScore = document.createElement('div');
+      var retObj = JSON.parse(localStorage.getItem("user"+i))
+      //console.log(retObj);
+      username.innerHTML = 'User - ' + retObj.userName;
+      totalScore.innerHTML = 'Score - '+ retObj.totalScore;
+      dashboard.appendChild(user);
+      user.appendChild(username);
+      user.appendChild(totalScore);
+    }
+  }
+</script>
+</body>
+</html>
