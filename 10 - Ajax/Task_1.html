@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task 1</title>
+  <script type="text/javascript" src = "./node_modules/lodash/lodash.min.js"></script>
+</head>
+<body>
+  <form id="todo">
+  	<input type="text" id="input" placeholder="Enter you task" value="">
+  	<button type="button" onclick = "addTask(event)" id="add">Add</button>
+  	<button type="button" onclick = "hideTask()" id="hide">Hide</button>
+  	<button type="button" onclick = "showTask()" id="show">Show</button>
+  	<button type="button" onclick = "delTask()" id="del">Delete</button>
+  </form>
+  <div id="tasks">
+    <div id="area1"></div>
+    <div id="area2"></div>
+    <div id="area3"></div>
+    <div id="area4"></div>
+  </div>
+  <script type="text/javascript" src = "./js/todo.js"></script>
+  <script type="text/javascript" src = "./js/ajax.js"></script>
+  </body>
+</html>
